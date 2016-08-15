@@ -31,11 +31,11 @@ public class MainPresenter extends BasePresenter{
      * @param getTopMovieOnNext
      */
     public void getMovie(SubscriberOnNextListener getTopMovieOnNext) {
-        requestList.add(
+        requestSubscriptions.add(
                 HttpMethods.getInstance()
-                .getTopMovie(0, 10)
+                        .getTopMovie(0, 10)
                         .retryWhen(new RetryWhenNetworkException())
-                .subscribe(new ProgressSubscriber(getTopMovieOnNext, context))
+                        .subscribe(new ProgressSubscriber(getTopMovieOnNext, context))
         );
     }
 }
