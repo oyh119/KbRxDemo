@@ -42,7 +42,6 @@ public class MainPresenter extends BasePresenter {
                 .filter(o -> {//延长请求时间 运行在IO线程中
                     try {
                         Thread.sleep(1000);
-                        System.out.println("ganchunyu-filter"+Thread.currentThread());
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
