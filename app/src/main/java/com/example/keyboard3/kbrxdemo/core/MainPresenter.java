@@ -2,6 +2,7 @@ package com.example.keyboard3.kbrxdemo.core;
 
 import android.content.Context;
 
+import com.example.keyboard3.kbrxdemo.http.HttpConfig.RetryWhenNetworkException;
 import com.example.keyboard3.kbrxdemo.http.HttpMethods;
 import com.example.keyboard3.kbrxdemo.subscribers.ProgressSubscriber;
 import com.example.keyboard3.kbrxdemo.subscribers.SubscriberOnNextListener;
@@ -33,6 +34,7 @@ public class MainPresenter extends BasePresenter{
         requestList.add(
                 HttpMethods.getInstance()
                 .getTopMovie(0, 10)
+                        .retryWhen(new RetryWhenNetworkException())
                 .subscribe(new ProgressSubscriber(getTopMovieOnNext, context))
         );
     }
