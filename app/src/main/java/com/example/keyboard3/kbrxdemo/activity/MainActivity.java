@@ -5,7 +5,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.keyboard3.kbrxdemo.R;
-import com.example.keyboard3.kbrxdemo.core.BasePresenter;
 import com.example.keyboard3.kbrxdemo.core.MainPresenter;
 import com.example.keyboard3.kbrxdemo.subscribers.SubscriberOnNextListener;
 import com.example.model.Subject;
@@ -51,12 +50,7 @@ public class MainActivity extends BaseActivity {
         RxView.clicks(clickMeBN)
                 .throttleFirst(2, TimeUnit.SECONDS)
                 .subscribe(aVoid -> {
-            presenter.getMovie(getTopMovieOnNext);
+            presenter.getMovie(getTopMovieOnNext,this);
         });
-    }
-
-    @Override
-    public BasePresenter getPresenter() {
-        return presenter;
     }
 }
