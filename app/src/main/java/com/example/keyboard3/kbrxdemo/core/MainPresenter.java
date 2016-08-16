@@ -1,13 +1,11 @@
 package com.example.keyboard3.kbrxdemo.core;
 
 import android.content.Context;
-import android.widget.Toast;
 
 import com.example.keyboard3.kbrxdemo.http.HttpConfig.RetryWhenNetworkException;
 import com.example.keyboard3.kbrxdemo.http.HttpMethods;
-import com.example.keyboard3.kbrxdemo.subscribers.ProgressSubscriber;
+import com.example.keyboard3.kbrxdemo.subscribers.BaseSubscriber;
 import com.example.keyboard3.kbrxdemo.subscribers.SubscriberOnNextListener;
-import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -35,24 +33,13 @@ public class MainPresenter extends BasePresenter {
      *
      * @param getTopMovieOnNext
      */
-    public void getMovie(SubscriberOnNextListener getTopMovieOnNext, RxAppCompatActivity activity) {
+    public void getMovie(SubscriberOnNextListener getTopMovieOnNext, com.trello.rxlifecycle.components.support.RxFragment fragment,int count) {
         HttpMethods.getInstance()
-                .getTopMovie(0, 10)
+                .getTopMovie(count, 12)
                 .observeOn(Schedulers.io())
-                .filter(o -> {//延长请求时间 运行在IO线程中
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    return true;
-                })
                 .retryWhen(new RetryWhenNetworkException())
                 .observeOn(AndroidSchedulers.mainThread())//必须在需要UI线程处理之前 切换到主线程
-                .doOnUnsubscribe(() -> {
-                    Toast.makeText(context, "取消", Toast.LENGTH_SHORT).show();
-                })
-                .compose(activity.bindToLifecycle())//自动相对应的生命周期中取消//bindUntilEvent(ActivityEvent.PAUSE)
-                .subscribe(new ProgressSubscriber(getTopMovieOnNext, context));
+                .compose(fragment.bindToLifecycle())//自动相对应的生命周期中取消//bindUntilEvent(ActivityEvent.PAUSE)
+                .subscribe(new BaseSubscriber(getTopMovieOnNext,context));
     }
 }

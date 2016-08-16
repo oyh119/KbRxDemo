@@ -1,0 +1,44 @@
+package com.example.keyboard3.kbrxdemo.fragment;
+
+
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+
+import com.example.keyboard3.kbrxdemo.core.MainPresenter;
+import com.example.model.Subject;
+import com.zhy.adapter.recyclerview.base.ViewHolder;
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class MovieFragment extends RecyclerFragment<Subject> {
+    private MainPresenter presenter;
+
+    public static MovieFragment newInstance() {
+
+        Bundle args = new Bundle();
+
+        MovieFragment fragment = new MovieFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    protected int initItemLayout() {
+        return android.R.layout.simple_list_item_1;
+    }
+
+    @Override
+    protected void itemConvert(ViewHolder holder, Subject subject, int position) {
+        holder.setText(android.R.id.text1, subject.getTitle());
+    }
+
+    @Override
+    protected void preInit() {
+        presenter = MainPresenter.getInstance(getContext());
+    }
+
+    protected void load(int page) {
+        presenter.getMovie(getListOnNext, this, page);
+    }
+}
