@@ -31,7 +31,6 @@ public class MainActivity extends BaseActivity {
         initMonitorNetwork();
     }
 
-
     /**
      * 监听网络变化
      */

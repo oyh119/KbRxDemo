@@ -8,6 +8,8 @@ import com.example.keyboard3.kbrxdemo.core.MainPresenter;
 import com.example.model.Subject;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
+import cn.zhaiyifan.interestingtitlebar.CustomTitleBarUtils;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -36,6 +38,14 @@ public class MovieFragment extends RecyclerFragment<Subject> {
     @Override
     protected void preInit() {
         presenter = MainPresenter.getInstance(getContext());
+    }
+
+    @Override
+    protected void handleHeader(CustomTitleBarUtils utils) {
+        utils
+                .setTitle("电影列表")
+                .setRightView(null)
+                .setLeftView(null).start();
     }
 
     protected void load(int page) {

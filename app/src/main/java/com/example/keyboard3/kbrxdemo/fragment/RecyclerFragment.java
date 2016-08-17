@@ -22,9 +22,12 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import cn.zhaiyifan.interestingtitlebar.CustomTitleBar;
+import cn.zhaiyifan.interestingtitlebar.CustomTitleBarUtils;
 
 
 /**
+ * RecyclerFragment :一个抽象列表页逻辑代码的Fragment
  * A simple {@link Fragment} subclass.
  */
 public abstract class RecyclerFragment<T> extends BaseFragment {
@@ -36,7 +39,7 @@ public abstract class RecyclerFragment<T> extends BaseFragment {
     protected SubscriberOnNextListener getListOnNext;
     private CommonAdapter adapter;
     private int start = 0;//第一页
-    private int page = start;//当前页
+    private volatile int page = start;//当前页
 
     private short loadMore=1;
     private short refresh=2;
@@ -59,8 +62,23 @@ public abstract class RecyclerFragment<T> extends BaseFragment {
         bindView();
     }
 
+    /**
+     * 获取list item Layout的布局id
+     * @return
+     */
     protected abstract int initItemLayout();
+
+    /**
+     * list  adapter 的convert的处理
+     * @param holder
+     * @param subject
+     * @param position
+     */
     protected abstract void itemConvert(ViewHolder holder, T subject, int position);
+
+    /**
+     * 绑定View的处理
+     */
     private void bindView() {
         adapter = new CommonAdapter<T>(getContext(),initItemLayout(),mDatas) {
             @Override
@@ -80,9 +98,28 @@ public abstract class RecyclerFragment<T> extends BaseFragment {
         rlContent.setAdapter(mLoadMoreWrapper);
     }
 
+    /**
+     * 初始化之前的操作
+     */
     protected abstract void preInit();
     private void init() {
         preInit();
+        initHeader();
+        initList();
+    }
+
+    /**
+     * 设置标题头
+     */
+    protected void initHeader(){
+        final CustomTitleBar bar = (CustomTitleBar) getView().findViewById(R.id.title_bar);
+        CustomTitleBarUtils utils = CustomTitleBarUtils.getInstance(bar);
+        handleHeader(utils);
+    }
+
+    protected abstract void handleHeader(CustomTitleBarUtils utils) ;
+
+    private void initList() {
         getListOnNext = new SubscriberOnNextListener<List<T>>() {
             @Override
             public void onNext(List<T> datas) {
@@ -95,6 +132,10 @@ public abstract class RecyclerFragment<T> extends BaseFragment {
                 }
             }
 
+            /**
+             * 统一处理加载数据的结果
+             * @param datas
+             */
             private void handleResult(List<T> datas) {
                 mDatas.addAll(datas);
                 mLoadMoreWrapper.notifyDataSetChanged();
@@ -110,6 +151,10 @@ public abstract class RecyclerFragment<T> extends BaseFragment {
         load(start);
     }
 
+    /**
+     * 加载列表页数据
+     * @param page
+     */
     protected abstract void load(int page);
 
     @Override

@@ -4,7 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.keyboard3.kbrxdemo.fragment.RecyclerFragment">
-
+    <include
+        layout="@layout/title_bar"
+        android:layout_alignParentTop="true"
+        android:layout_height="@dimen/title_bar_min_height"
+        android:layout_width="match_parent"/>
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefresh"
         android:layout_width="match_parent"
