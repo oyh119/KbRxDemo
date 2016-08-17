@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <Button
+        android:id="@+id/bar_left_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="0dp"
+        android:background="@drawable/selector_skin_nav_icon_l_return"
+        android:minHeight="@dimen/title_bar_nav_btn_height"
+        android:minWidth="@dimen/title_bar_nav_btn_width"
+        android:paddingRight="15dp"
+        android:text="返回"
+        android:textColor="@color/selector_color_title"
+        android:textSize="@dimen/title_bar_text_size"/>
+    <ImageView
+        android:id="@+id/bar_right_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|right"
+        android:layout_marginRight="@dimen/title_bar_btn_margin"
+        android:src="@drawable/selector_skin_nav_icon_r_refresh"
+        android:gravity="center_vertical|right"/>
+</LinearLayout>

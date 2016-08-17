@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cn.zhaiyifan.interestingtitlebar.CustomTitleBar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/title_bar"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#3F51B5"
+    android:minHeight="@dimen/title_bar_min_height">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_bar_min_height">
+        <!-- 标题区 -->
+        <TextView
+            android:id="@+id/bar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:ellipsize="end"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:marqueeRepeatLimit="1"
+            android:maxWidth="@dimen/title_bar_title_width"
+            android:singleLine="true"
+            android:textColor="@color/selector_color_title"
+            android:textSize="@dimen/title_bar_title_text_size" />
+
+        <!-- 左操作区 -->
+        <LinearLayout
+            android:id="@+id/leftButtonArea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal">
+
+            <!-- 左按钮和红点提醒 -->
+            <Button
+                android:id="@+id/bar_left_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="0dp"
+                android:background="@drawable/selector_skin_nav_icon_l_return"
+                android:minHeight="@dimen/title_bar_nav_btn_height"
+                android:minWidth="@dimen/title_bar_nav_btn_width"
+                android:paddingRight="15dp"
+                android:text="返回"
+                android:textColor="@color/selector_color_title"
+                android:textSize="@dimen/title_bar_text_size" />
+        </LinearLayout>
+
+        <!-- 右操作区 -->
+        <LinearLayout
+            android:id="@+id/rightButtonArea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/bar_right_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="@dimen/title_bar_btn_margin"
+                android:gravity="center_vertical|right"
+                android:src="@drawable/selector_skin_nav_icon_r_refresh" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</cn.zhaiyifan.interestingtitlebar.CustomTitleBar>
