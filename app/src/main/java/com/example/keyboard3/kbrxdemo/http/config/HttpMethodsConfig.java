@@ -15,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -33,13 +34,17 @@ public class HttpMethodsConfig {
 
     //构造方法私有
     private HttpMethodsConfig() {
-        //手动创建一个OkHttpClient并设置超时时间
+        //请求日志 Body(最顶级)级别
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+        //缓存目录
         Cache cache = getCache(Config.context);
         OkHttpClient newClient = new OkHttpClient().newBuilder()
                 .cache(cache)
                 .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
                 .readTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
                 .addNetworkInterceptor(new RewriteCacheControlInterceptor())
+                .addInterceptor(logging)
                 .build();
 
         retrofit = new Retrofit.Builder()
@@ -57,11 +62,10 @@ public class HttpMethodsConfig {
         String cachePath;
         Cache cache;
         if(SDCardUtils.isSDCardEnable()){
-            cachePath= SDCardUtils.getSDCardPath()+ Config.cacheDir+"/"+"Http";
+            cachePath= SDCardUtils.getSDCardPath()+ Config.cacheDir+"/"+"HttpCache";
         }else{
-            cachePath=context.getCacheDir()+ Config.cacheDir+"/"+"Http";
+            cachePath=context.getCacheDir()+ Config.cacheDir+"/"+"HttpCache";
         }
-        Log.d(Config.LOG_TAG,cachePath);
         cache=new Cache(new File(cachePath), 10240*1024);
         return cache;
     }

@@ -1,4 +1,4 @@
-package com.example.keyboard3.kbrxdemo.ui.fragment;
+package com.example.keyboard3.kbrxdemo.ui.fragment.common;
 
 import android.media.MediaCodec;
 import android.os.Bundle;

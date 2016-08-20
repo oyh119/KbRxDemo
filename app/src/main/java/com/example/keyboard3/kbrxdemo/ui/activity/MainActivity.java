@@ -28,7 +28,7 @@ public class MainActivity extends BaseActivity {
 
     private void init() {
         fragmentReplace(R.id.fl_content, MovieFragment.newInstance());
-        initMonitorNetwork();
+        //initMonitorNetwork();
     }
 
     /**
