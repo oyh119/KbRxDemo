@@ -28,6 +28,7 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':model')
+    compile project(':interestingtitlebar')
     compile 'com.android.support:appcompat-v7:24.1.1'
     compile 'io.reactivex:rxjava:1.1.0'
     compile 'io.reactivex:rxandroid:1.1.0'
@@ -44,8 +45,7 @@ dependencies {
     compile 'com.zhy:base-rvadapter:3.0.3'
     compile 'com.blankj:utilcode:1.1.0'
     testCompile 'junit:junit:4.12'
-    compile project(':interestingtitlebar')
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
-    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
 }

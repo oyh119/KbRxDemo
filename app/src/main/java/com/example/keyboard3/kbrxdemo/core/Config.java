@@ -9,4 +9,5 @@ import android.content.Context;
 public class Config {
     public static final String cacheDir="KbRxDemo";
     public static Context context;
+    public static String LOG_TAG="keyboard3";
 }

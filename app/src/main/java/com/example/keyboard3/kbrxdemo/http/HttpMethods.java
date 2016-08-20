@@ -1,7 +1,7 @@
 package com.example.keyboard3.kbrxdemo.http;
 
-import com.example.keyboard3.kbrxdemo.http.HttpConfig.HttpMethodsConfig;
-import com.example.keyboard3.kbrxdemo.http.HttpConfig.RetryWhenNetworkException;
+import com.example.keyboard3.kbrxdemo.http.config.HttpMethodsConfig;
+import com.example.keyboard3.kbrxdemo.http.config.RetryWhenNetworkException;
 import com.example.keyboard3.kbrxdemo.http.exception.ExceptionEngine;
 import com.example.model.HttpResult;
 import com.example.model.Subject;
@@ -86,7 +86,7 @@ public class HttpMethods {
     public Observable getTopMovie(int start, int count) {
         return movieService.getTopMovie(start, count)
                 .subscribeOn(Schedulers.io())
-                .retryWhen(new RetryWhenNetworkException())
+                .retryWhen(new RetryWhenNetworkException())//连接重试
                 .map(new ServerResultFunc<List<Subject>>())//指定服务器异常
                 .onErrorResumeNext(new HttpResultFunc())
                 .unsubscribeOn(Schedulers.io())

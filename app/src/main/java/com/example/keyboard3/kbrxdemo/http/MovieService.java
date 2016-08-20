@@ -6,6 +6,7 @@ import com.example.model.Subject;
 import java.util.List;
 
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.Query;
 import rx.Observable;
 
@@ -20,9 +21,9 @@ public interface MovieService {
 //    @GET("top250")
 //    Observable<MovieEntity> getTopMovie(@Query("start") int start, @Query("count") int count);
 
-//    @GET("top250")
+    //    @GET("top250")
 //    Observable<HttpResult<List<Subject>>> getTopMovie(@Query("start") int start, @Query("count") int count);
-
+    @Headers("Cache-Control: public, max-age=3600")
     @GET("top250")
     Observable<HttpResult<List<Subject>>> getTopMovie(@Query("start") int start, @Query("count") int count);
 }

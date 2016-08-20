@@ -2,10 +2,10 @@ package com.example.keyboard3.kbrxdemo.core.presenter;
 
 import android.content.Context;
 
-import com.example.keyboard3.kbrxdemo.http.HttpConfig.RetryWhenNetworkException;
-import com.example.keyboard3.kbrxdemo.http.HttpMethods;
 import com.example.keyboard3.kbrxdemo.core.subscribers.BaseSubscriber;
 import com.example.keyboard3.kbrxdemo.core.subscribers.SubscriberOnNextListener;
+import com.example.keyboard3.kbrxdemo.http.config.RetryWhenNetworkException;
+import com.example.keyboard3.kbrxdemo.http.HttpMethods;
 
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -14,16 +14,16 @@ import rx.schedulers.Schedulers;
  * Created by asus on 2016/8/14.
  */
 
-public class MainPresenter extends BasePresenter {
-    private static MainPresenter sigleton;
+public class MoviePresenter extends BasePresenter {
+    private static MoviePresenter sigleton;
 
-    private MainPresenter(Context context) {
+    private MoviePresenter(Context context) {
         super(context);
     }
 
-    public static MainPresenter getInstance(Context context) {
+    public static MoviePresenter getInstance(Context context) {
         if (sigleton == null) {
-            sigleton = new MainPresenter(context);
+            sigleton = new MoviePresenter(context);
         }
         return sigleton;
     }
@@ -33,7 +33,7 @@ public class MainPresenter extends BasePresenter {
      *
      * @param getTopMovieOnNext
      */
-    public void getMovie(SubscriberOnNextListener getTopMovieOnNext, com.trello.rxlifecycle.components.support.RxFragment fragment,int count) {
+    public void getMovie(SubscriberOnNextListener getTopMovieOnNext, com.trello.rxlifecycle.components.support.RxFragment fragment, int count) {
         HttpMethods.getInstance()
                 .getTopMovie(count, 12)
                 .observeOn(Schedulers.io())

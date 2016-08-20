@@ -48,11 +48,8 @@ public abstract class RecyclerFragment<T> extends BaseFragment {
     private LoadMoreWrapper mLoadMoreWrapper;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_recycler, container, false);
-        ButterKnife.bind(this, view);
-        return view;
+    protected int initLayoutId() {
+        return R.layout.fragment_recycler;
     }
 
     @Override
@@ -156,10 +153,4 @@ public abstract class RecyclerFragment<T> extends BaseFragment {
      * @param page
      */
     protected abstract void load(int page);
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        ButterKnife.unbind(this);
-    }
 }

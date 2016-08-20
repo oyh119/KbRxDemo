@@ -1,12 +1,14 @@
-package com.example.keyboard3.kbrxdemo.http.HttpConfig;
+package com.example.keyboard3.kbrxdemo.http.config;
 
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.blankj.utilcode.utils.SDCardUtils;
 import com.example.keyboard3.kbrxdemo.core.Config;
 import com.example.keyboard3.kbrxdemo.http.MovieService;
+import com.example.keyboard3.kbrxdemo.http.okhttp.RewriteCacheControlInterceptor;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
@@ -32,13 +34,16 @@ public class HttpMethodsConfig {
     //构造方法私有
     private HttpMethodsConfig() {
         //手动创建一个OkHttpClient并设置超时时间
-        OkHttpClient.Builder builder = new OkHttpClient.Builder();
         Cache cache = getCache(Config.context);
-        builder.cache(cache);
-        builder.connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
+        OkHttpClient newClient = new OkHttpClient().newBuilder()
+                .cache(cache)
+                .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
+                .readTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
+                .addNetworkInterceptor(new RewriteCacheControlInterceptor())
+                .build();
 
         retrofit = new Retrofit.Builder()
-                .client(builder.build())
+                .client(newClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .baseUrl(BASE_URL)
@@ -56,7 +61,8 @@ public class HttpMethodsConfig {
         }else{
             cachePath=context.getCacheDir()+ Config.cacheDir+"/"+"Http";
         }
-        cache=new Cache(new File(cachePath),30000);
+        Log.d(Config.LOG_TAG,cachePath);
+        cache=new Cache(new File(cachePath), 10240*1024);
         return cache;
     }
 

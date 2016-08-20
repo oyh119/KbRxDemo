@@ -4,7 +4,7 @@ package com.example.keyboard3.kbrxdemo.ui.fragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
-import com.example.keyboard3.kbrxdemo.core.presenter.MainPresenter;
+import com.example.keyboard3.kbrxdemo.core.presenter.MoviePresenter;
 import com.example.model.Subject;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
@@ -14,7 +14,7 @@ import cn.zhaiyifan.interestingtitlebar.CustomTitleBarUtils;
  * A simple {@link Fragment} subclass.
  */
 public class MovieFragment extends RecyclerFragment<Subject> {
-    private MainPresenter presenter;
+    private MoviePresenter presenter;
 
     public static MovieFragment newInstance() {
 
@@ -37,7 +37,7 @@ public class MovieFragment extends RecyclerFragment<Subject> {
 
     @Override
     protected void preInit() {
-        presenter = MainPresenter.getInstance(getContext());
+        presenter = MoviePresenter.getInstance(getContext());
     }
 
     @Override

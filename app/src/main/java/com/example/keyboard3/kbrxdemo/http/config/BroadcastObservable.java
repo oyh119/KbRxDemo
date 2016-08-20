@@ -1,4 +1,4 @@
-package com.example.keyboard3.kbrxdemo.http.HttpConfig;
+package com.example.keyboard3.kbrxdemo.http.config;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;

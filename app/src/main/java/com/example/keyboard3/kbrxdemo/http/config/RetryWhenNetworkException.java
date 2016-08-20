@@ -1,4 +1,4 @@
-package com.example.keyboard3.kbrxdemo.http.HttpConfig;
+package com.example.keyboard3.kbrxdemo.http.config;
 
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
