@@ -1,9 +1,9 @@
-package com.example.keyboard3.kbrxdemo.subscribers;
+package com.example.keyboard3.kbrxdemo.core.subscribers;
 
 import android.content.Context;
 
-import com.example.keyboard3.kbrxdemo.progress.ProgressCancelListener;
-import com.example.keyboard3.kbrxdemo.progress.ProgressDialogHandler;
+import com.example.keyboard3.kbrxdemo.http.progress.ProgressCancelListener;
+import com.example.keyboard3.kbrxdemo.http.progress.ProgressDialogHandler;
 
 /**
  * 用于在Http请求开始时，自动显示一个ProgressDialog

@@ -1,4 +1,4 @@
-package com.example.keyboard3.kbrxdemo.fragment;
+package com.example.keyboard3.kbrxdemo.ui.fragment;
 
 /**
  * Desc:

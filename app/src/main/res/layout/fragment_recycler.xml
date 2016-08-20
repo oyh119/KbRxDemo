@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.keyboard3.kbrxdemo.fragment.RecyclerFragment">
+    tools:context=".ui.fragment.RecyclerFragment">
     <include
         layout="@layout/title_bar"
         android:layout_alignParentTop="true"

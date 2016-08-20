@@ -1,11 +1,11 @@
-package com.example.keyboard3.kbrxdemo.activity;
+package com.example.keyboard3.kbrxdemo.ui.activity;
 
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.example.keyboard3.kbrxdemo.R;
-import com.example.keyboard3.kbrxdemo.fragment.MovieFragment;
+import com.example.keyboard3.kbrxdemo.ui.fragment.MovieFragment;
 import com.github.pwittchen.reactivenetwork.library.Connectivity;
 import com.github.pwittchen.reactivenetwork.library.ReactiveNetwork;
 

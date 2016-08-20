@@ -1,4 +1,4 @@
-package com.example.keyboard3.kbrxdemo.progress;
+package com.example.keyboard3.kbrxdemo.http.progress;
 
 import android.app.ProgressDialog;
 import android.content.Context;

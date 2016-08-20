@@ -1,4 +1,4 @@
-package com.example.keyboard3.kbrxdemo.activity;
+package com.example.keyboard3.kbrxdemo.ui.activity;
 
 import android.support.v4.app.Fragment;
 

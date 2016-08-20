@@ -4,8 +4,8 @@ import android.content.Context;
 
 import com.example.keyboard3.kbrxdemo.http.HttpConfig.RetryWhenNetworkException;
 import com.example.keyboard3.kbrxdemo.http.HttpMethods;
-import com.example.keyboard3.kbrxdemo.subscribers.BaseSubscriber;
-import com.example.keyboard3.kbrxdemo.subscribers.SubscriberOnNextListener;
+import com.example.keyboard3.kbrxdemo.core.subscribers.BaseSubscriber;
+import com.example.keyboard3.kbrxdemo.core.subscribers.SubscriberOnNextListener;
 
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;

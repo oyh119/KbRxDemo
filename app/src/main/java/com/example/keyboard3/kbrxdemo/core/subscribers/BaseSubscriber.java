@@ -1,4 +1,4 @@
-package com.example.keyboard3.kbrxdemo.subscribers;
+package com.example.keyboard3.kbrxdemo.core.subscribers;
 
 import android.content.Context;
 import android.widget.Toast;

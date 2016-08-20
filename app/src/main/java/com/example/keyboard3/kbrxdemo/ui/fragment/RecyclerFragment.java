@@ -1,4 +1,4 @@
-package com.example.keyboard3.kbrxdemo.fragment;
+package com.example.keyboard3.kbrxdemo.ui.fragment;
 
 
 import android.app.Fragment;
@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.keyboard3.kbrxdemo.R;
-import com.example.keyboard3.kbrxdemo.subscribers.SubscriberOnNextListener;
+import com.example.keyboard3.kbrxdemo.core.subscribers.SubscriberOnNextListener;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 import com.zhy.adapter.recyclerview.wrapper.LoadMoreWrapper;
