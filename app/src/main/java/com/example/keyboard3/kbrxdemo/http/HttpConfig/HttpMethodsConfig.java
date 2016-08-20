@@ -1,10 +1,17 @@
 package com.example.keyboard3.kbrxdemo.http.HttpConfig;
 
 
+import android.content.Context;
+import android.support.annotation.NonNull;
+
+import com.blankj.utilcode.utils.SDCardUtils;
+import com.example.keyboard3.kbrxdemo.core.Config;
 import com.example.keyboard3.kbrxdemo.http.MovieService;
 
+import java.io.File;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -26,6 +33,8 @@ public class HttpMethodsConfig {
     private HttpMethodsConfig() {
         //手动创建一个OkHttpClient并设置超时时间
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        Cache cache = getCache(Config.context);
+        builder.cache(cache);
         builder.connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
 
         retrofit = new Retrofit.Builder()
@@ -36,6 +45,19 @@ public class HttpMethodsConfig {
                 .build();
 
         movieService = retrofit.create(MovieService.class);
+    }
+
+    @NonNull
+    private Cache getCache(Context context) {
+        String cachePath;
+        Cache cache;
+        if(SDCardUtils.isSDCardEnable()){
+            cachePath= SDCardUtils.getSDCardPath()+ Config.cacheDir+"/"+"Http";
+        }else{
+            cachePath=context.getCacheDir()+ Config.cacheDir+"/"+"Http";
+        }
+        cache=new Cache(new File(cachePath),30000);
+        return cache;
     }
 
     //在访问HttpMethods时创建单例

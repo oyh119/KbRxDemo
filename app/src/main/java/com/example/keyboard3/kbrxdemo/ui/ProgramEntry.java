@@ -2,6 +2,7 @@ package com.example.keyboard3.kbrxdemo.ui;
 
 import android.app.Application;
 
+import com.example.keyboard3.kbrxdemo.core.Config;
 import com.squareup.leakcanary.LeakCanary;
 
 /**
@@ -13,5 +14,6 @@ public class ProgramEntry extends Application {
     public void onCreate() {
         super.onCreate();
         LeakCanary.install(this);
+        Config.context=this;
     }
 }

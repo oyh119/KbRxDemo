@@ -1,4 +1,4 @@
-package com.example.keyboard3.kbrxdemo.core;
+package com.example.keyboard3.kbrxdemo.core.presenter;
 
 import android.content.Context;
 

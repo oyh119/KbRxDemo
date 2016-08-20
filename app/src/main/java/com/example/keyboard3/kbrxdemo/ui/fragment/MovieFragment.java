@@ -4,7 +4,7 @@ package com.example.keyboard3.kbrxdemo.ui.fragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
-import com.example.keyboard3.kbrxdemo.core.MainPresenter;
+import com.example.keyboard3.kbrxdemo.core.presenter.MainPresenter;
 import com.example.model.Subject;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
