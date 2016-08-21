@@ -6,7 +6,7 @@ import com.example.keyboard3.kbrxdemo.core.Config;
 import com.squareup.leakcanary.LeakCanary;
 
 /**
- * Created by asus on 2016/8/20.
+ * Created by keyboard3 on 2016/8/20.
  */
 
 public class ProgramEntry extends Application {

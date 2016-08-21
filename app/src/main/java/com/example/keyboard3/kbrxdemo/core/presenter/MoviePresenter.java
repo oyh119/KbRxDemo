@@ -11,21 +11,16 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
- * Created by asus on 2016/8/14.
+ * Created by keyboard3 on 2016/8/14.
  */
 
 public class MoviePresenter extends BasePresenter {
-    private static MoviePresenter sigleton;
-
     private MoviePresenter(Context context) {
         super(context);
     }
 
     public static MoviePresenter getInstance(Context context) {
-        if (sigleton == null) {
-            sigleton = new MoviePresenter(context);
-        }
-        return sigleton;
+        return new MoviePresenter(context);
     }
 
     /**
@@ -33,9 +28,9 @@ public class MoviePresenter extends BasePresenter {
      *
      * @param getTopMovieOnNext
      */
-    public void getMovie(SubscriberOnNextListener getTopMovieOnNext, com.trello.rxlifecycle.components.support.RxFragment fragment, int count) {
+    public void getMovie(SubscriberOnNextListener getTopMovieOnNext, com.trello.rxlifecycle.components.support.RxFragment fragment, int start) {
         HttpMethods.getInstance()
-                .getTopMovie(count, 12)
+                .getTopMovie(start, 12)
                 .observeOn(Schedulers.io())
                 .retryWhen(new RetryWhenNetworkException())
                 .observeOn(AndroidSchedulers.mainThread())//必须在需要UI线程处理之前 切换到主线程

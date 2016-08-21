@@ -4,13 +4,17 @@ package com.example.keyboard3.kbrxdemo.ui.fragment.common;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ListFragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
 
 import com.example.keyboard3.kbrxdemo.R;
 import com.example.keyboard3.kbrxdemo.core.subscribers.SubscriberOnNextListener;
 import com.example.keyboard3.kbrxdemo.ui.fragment.common.BaseFragment;
+import com.example.keyboard3.kbrxdemo.view.DefaultLoadingViewGroup;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 import com.zhy.adapter.recyclerview.wrapper.LoadMoreWrapper;
@@ -37,7 +41,6 @@ public abstract class RecyclerFragment<T> extends BaseFragment {
     private CommonAdapter adapter;
     private int start = 0;//第一页
     private volatile int page = start;//当前页
-
     private short loadMore = 1;
     private short refresh = 2;
     private short normal = 0;
@@ -84,7 +87,8 @@ public abstract class RecyclerFragment<T> extends BaseFragment {
         };
         mLoadMoreWrapper = new LoadMoreWrapper(adapter);
         //todo  如果仿造知乎  这里就需要设置View了，监听网络情况。内部还开放请求接口
-        mLoadMoreWrapper.setLoadMoreView(R.layout.default_loading);
+        DefaultLoadingViewGroup loadingView= (DefaultLoadingViewGroup) LayoutInflater.from(getContext().getApplicationContext()).inflate(R.layout.default_loading_parent,null,false);
+        mLoadMoreWrapper.setLoadMoreView(loadingView);
         mLoadMoreWrapper.setOnLoadMoreListener(() -> {
             if (isLoadRefresh == normal) {
                 isLoadRefresh = loadMore;

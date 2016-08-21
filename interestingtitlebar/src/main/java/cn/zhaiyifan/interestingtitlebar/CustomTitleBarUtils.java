@@ -26,13 +26,8 @@ public class CustomTitleBarUtils {
         rightLayout = findViewById(R.id.rightButtonArea);
     }
 
-    private static CustomTitleBarUtils singleton;
-
     public static CustomTitleBarUtils getInstance(CustomTitleBar titleBar) {
-        if (singleton == null) {
-            singleton = new CustomTitleBarUtils(titleBar);
-        }
-        return singleton;
+       return  new CustomTitleBarUtils(titleBar);
     }
 
     public CustomTitleBarUtils setTitle(String name) {

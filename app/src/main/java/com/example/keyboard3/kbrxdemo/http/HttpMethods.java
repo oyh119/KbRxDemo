@@ -15,7 +15,7 @@ import rx.schedulers.Schedulers;
 
 /**
  * 所有网络请求在这里实现
- * Created by asus on 2016/8/14.
+ * Created by keyboard3 on 2016/8/14.
  */
 
 public class HttpMethods {

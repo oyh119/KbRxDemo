@@ -3,7 +3,10 @@ package com.example.keyboard3.kbrxdemo.ui.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.ListFragment;
+import android.util.Log;
 
+import com.example.keyboard3.kbrxdemo.core.Config;
 import com.example.keyboard3.kbrxdemo.core.presenter.MoviePresenter;
 import com.example.keyboard3.kbrxdemo.ui.fragment.common.RecyclerFragment;
 import com.example.model.Subject;
@@ -25,7 +28,6 @@ public class MovieFragment extends RecyclerFragment<Subject> {
         fragment.setArguments(args);
         return fragment;
     }
-
     @Override
     protected int initItemLayout() {
         return android.R.layout.simple_list_item_1;
@@ -50,6 +52,7 @@ public class MovieFragment extends RecyclerFragment<Subject> {
     }
 
     protected void load(int page) {
+        Log.d(Config.LOG_TAG, "page:" + page);
         presenter.getMovie(getListOnNext, this, page);
     }
 }

@@ -44,7 +44,7 @@ public class HttpMethodsConfig {
                 .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
                 .readTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
                 .addNetworkInterceptor(new RewriteCacheControlInterceptor())
-                .addInterceptor(logging)
+                //.addInterceptor(logging)
                 .build();
 
         retrofit = new Retrofit.Builder()
