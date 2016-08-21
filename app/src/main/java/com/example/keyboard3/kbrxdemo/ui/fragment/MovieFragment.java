@@ -52,7 +52,7 @@ public class MovieFragment extends RecyclerFragment<Subject> {
     }
 
     protected void load(int page) {
-        Log.d(Config.LOG_TAG, "page:" + page);
+        Log.d(Config.LOG_TAG,"load-page:"+page);
         presenter.getMovie(getListOnNext, this, page);
     }
 }

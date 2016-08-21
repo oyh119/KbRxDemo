@@ -8,10 +8,13 @@ import android.support.v4.app.ListFragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.keyboard3.kbrxdemo.R;
+import com.example.keyboard3.kbrxdemo.core.Config;
 import com.example.keyboard3.kbrxdemo.core.subscribers.SubscriberOnNextListener;
 import com.example.keyboard3.kbrxdemo.ui.fragment.common.BaseFragment;
 import com.example.keyboard3.kbrxdemo.view.DefaultLoadingViewGroup;
@@ -21,6 +24,7 @@ import com.zhy.adapter.recyclerview.wrapper.LoadMoreWrapper;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import butterknife.Bind;
 import cn.zhaiyifan.interestingtitlebar.CustomTitleBar;
@@ -46,6 +50,7 @@ public abstract class RecyclerFragment<T> extends BaseFragment {
     private short normal = 0;
     private volatile int isLoadRefresh = normal;//当前状态
     private LoadMoreWrapper mLoadMoreWrapper;
+    private DefaultLoadingViewGroup loadingView;
 
     @Override
     protected int initLayoutId() {
@@ -79,24 +84,41 @@ public abstract class RecyclerFragment<T> extends BaseFragment {
      * 绑定View的处理
      */
     private void bindView() {
+
         adapter = new CommonAdapter<T>(getContext(), initItemLayout(), mDatas) {
             @Override
             protected void convert(ViewHolder holder, T subject, int position) {
                 itemConvert(holder, subject, position);
             }
         };
+        //加载更多
         mLoadMoreWrapper = new LoadMoreWrapper(adapter);
-        //todo  如果仿造知乎  这里就需要设置View了，监听网络情况。内部还开放请求接口
-        DefaultLoadingViewGroup loadingView= (DefaultLoadingViewGroup) LayoutInflater.from(getContext().getApplicationContext()).inflate(R.layout.default_loading_parent,null,false);
+        loadingView = (DefaultLoadingViewGroup) LayoutInflater.from(getContext().getApplicationContext()).inflate(R.layout.default_loading_parent, null, false);
         mLoadMoreWrapper.setLoadMoreView(loadingView);
+        loadingView.setOnClickListener(v -> {
+            loadMore();
+        });
         mLoadMoreWrapper.setOnLoadMoreListener(() -> {
-            if (isLoadRefresh == normal) {
-                isLoadRefresh = loadMore;
-                load(page++);
-            }
+            loadMore();
         });
         rlContent.setLayoutManager(new LinearLayoutManager(getContext()));
         rlContent.setAdapter(mLoadMoreWrapper);
+    }
+
+    /**
+     * hongyang的baseAdapter 因为一开始加载就先加载loadmore方法
+     */
+    private void loadMore() {
+        if (isLoadRefresh == normal) {
+            isLoadRefresh = loadMore;
+            int loadPage = page;
+            if (loadPage != 0) {
+                loadPage++;
+            }
+            load(loadPage);
+        }
+        Log.d(Config.LOG_TAG,"setOnClickListener-isLoadRefresh:"+isLoadRefresh);
+        Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
     }
     /**
      * todo
@@ -130,13 +152,21 @@ public abstract class RecyclerFragment<T> extends BaseFragment {
         getListOnNext = new SubscriberOnNextListener<List<T>>() {
             @Override
             public void onNext(List<T> datas) {
+                Log.d(Config.LOG_TAG,"repsone=isLoadRefresh:"+isLoadRefresh);
                 if (isLoadRefresh == refresh) {
+                    page = 0;
                     swipeRefresh.setRefreshing(false);
                     mDatas.clear();
                     handleResult(datas);
                 } else if (isLoadRefresh == loadMore) {
+                    page++;
                     handleResult(datas);
                 }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                handleResponse(false);
             }
 
             /**
@@ -146,21 +176,30 @@ public abstract class RecyclerFragment<T> extends BaseFragment {
             private void handleResult(List<T> datas) {
                 mDatas.addAll(datas);
                 mLoadMoreWrapper.notifyDataSetChanged();
-                isLoadRefresh = normal;
+                handleResponse(true);
             }
         };
+        //刷新
         swipeRefresh.setOnRefreshListener(() -> {
+            Log.d(Config.LOG_TAG,"setOnRefreshListener-isLoadRefresh:"+isLoadRefresh);
             if (isLoadRefresh == normal) {
                 isLoadRefresh = refresh;
                 //todo 如果需要列表缓存 if page=start load(start,time=0) else 1
                 load(start);
+            }else{
+                swipeRefresh.setRefreshing(false);
             }
         });
-        load(start);
+    }
+
+    protected void handleResponse(boolean successed) {
+        isLoadRefresh = normal;
+        loadingView.show(successed);
     }
 
     /**
      * 加载列表页数据     *
+     *
      * @param page
      */
     protected abstract void load(int page);

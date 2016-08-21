@@ -5,4 +5,5 @@ package com.example.keyboard3.kbrxdemo.core.subscribers;
  */
 public interface SubscriberOnNextListener<T> {
     void onNext(T t);
+    void onError(Throwable e);
 }
