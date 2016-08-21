@@ -53,17 +53,17 @@ public abstract class RecyclerFragment<T> extends BaseFragment {
     private DefaultLoadingViewGroup loadingView;
 
     @Override
-    protected int initLayoutId() {
-        return R.layout.fragment_recycler;
-    }
-
-    @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         init();
         bindView();
     }
 
+
+    @Override
+    protected int initLayoutId() {
+        return R.layout.fragment_recycler;
+    }
     /**
      * 获取list item Layout的布局id
      *
@@ -117,7 +117,6 @@ public abstract class RecyclerFragment<T> extends BaseFragment {
             }
             load(loadPage);
         }
-        Log.d(Config.LOG_TAG,"setOnClickListener-isLoadRefresh:"+isLoadRefresh);
         Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
     }
     /**
@@ -152,7 +151,6 @@ public abstract class RecyclerFragment<T> extends BaseFragment {
         getListOnNext = new SubscriberOnNextListener<List<T>>() {
             @Override
             public void onNext(List<T> datas) {
-                Log.d(Config.LOG_TAG,"repsone=isLoadRefresh:"+isLoadRefresh);
                 if (isLoadRefresh == refresh) {
                     page = 0;
                     swipeRefresh.setRefreshing(false);
@@ -181,7 +179,6 @@ public abstract class RecyclerFragment<T> extends BaseFragment {
         };
         //刷新
         swipeRefresh.setOnRefreshListener(() -> {
-            Log.d(Config.LOG_TAG,"setOnRefreshListener-isLoadRefresh:"+isLoadRefresh);
             if (isLoadRefresh == normal) {
                 isLoadRefresh = refresh;
                 //todo 如果需要列表缓存 if page=start load(start,time=0) else 1

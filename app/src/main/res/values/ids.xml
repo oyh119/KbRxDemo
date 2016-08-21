@@ -3,4 +3,6 @@
     <item type="id" name="default_loading" />
     <item type="id" name="default_loading_error"/>
     <item type="id" name="tv_error_load"/>
+    <item type="id" name="rl_content"/>
+    <item type="id" name="swipeRefresh"/>
 </resources>
