@@ -19,10 +19,9 @@ import rx.schedulers.Schedulers;
  */
 
 public class HttpMethods {
-    private static HttpMethods singleton;
     private static HttpMethodsConfig config;
     private MovieService movieService;
-
+    private static HttpMethods singleton;
     private HttpMethods() {
         config = HttpMethodsConfig.getInstance();
         movieService = config.getMovieService();
