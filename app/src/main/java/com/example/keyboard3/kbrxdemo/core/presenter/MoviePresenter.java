@@ -33,6 +33,7 @@ public class MoviePresenter extends BasePresenter {
                 .observeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())//必须在需要UI线程处理之前 切换到主线程
                 .compose(fragment.bindToLifecycle())//自动相对应的生命周期中取消//bindUntilEvent(ActivityEvent.PAUSE)
-                .subscribe(new BaseSubscriber(getTopMovieOnNext,context));
+                .subscribe(new BaseSubscriber(getTopMovieOnNext, context));
     }
+
 }

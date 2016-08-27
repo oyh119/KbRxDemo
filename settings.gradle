@@ -1,1 +1,1 @@
-include ':app', ':model', ':interestingtitlebar'
+include ':app', ':interestingtitlebar'

@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.keyboard3.kbrxdemo.R;
-import com.example.keyboard3.kbrxdemo.ui.fragment.MovieFragment;
+import com.example.keyboard3.kbrxdemo.ui.fragment.DataBindingFragment;
 import com.github.pwittchen.reactivenetwork.library.Connectivity;
 import com.github.pwittchen.reactivenetwork.library.ReactiveNetwork;
 
@@ -26,7 +26,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void init() {
-        fragmentReplace(R.id.fl_content, MovieFragment.newInstance());
+        fragmentReplace(R.id.fl_content, DataBindingFragment.newInstance());
         //initMonitorNetwork();
     }
 

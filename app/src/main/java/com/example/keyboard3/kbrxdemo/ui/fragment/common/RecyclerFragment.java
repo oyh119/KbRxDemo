@@ -4,19 +4,14 @@ package com.example.keyboard3.kbrxdemo.ui.fragment.common;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ListFragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.Toast;
 
 import com.example.keyboard3.kbrxdemo.R;
-import com.example.keyboard3.kbrxdemo.core.Config;
 import com.example.keyboard3.kbrxdemo.core.subscribers.SubscriberOnNextListener;
-import com.example.keyboard3.kbrxdemo.ui.fragment.common.BaseFragment;
 import com.example.keyboard3.kbrxdemo.view.DefaultLoadingViewGroup;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
@@ -24,7 +19,6 @@ import com.zhy.adapter.recyclerview.wrapper.LoadMoreWrapper;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.logging.Logger;
 
 import butterknife.Bind;
 import cn.zhaiyifan.interestingtitlebar.CustomTitleBar;

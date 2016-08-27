@@ -1,4 +1,4 @@
-package com.example.model.common;
+package com.example.keyboard3.kbrxdemo.model.common;
 
 /**
  * 公共数据格式

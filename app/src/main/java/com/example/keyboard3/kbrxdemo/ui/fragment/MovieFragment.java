@@ -3,14 +3,12 @@ package com.example.keyboard3.kbrxdemo.ui.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.ListFragment;
 import android.util.Log;
 
-import com.example.keyboard3.kbrxdemo.R;
 import com.example.keyboard3.kbrxdemo.core.Config;
 import com.example.keyboard3.kbrxdemo.core.presenter.MoviePresenter;
 import com.example.keyboard3.kbrxdemo.ui.fragment.common.RecyclerFragment;
-import com.example.model.Subject;
+import com.example.keyboard3.kbrxdemo.model.Subject;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import cn.zhaiyifan.interestingtitlebar.CustomTitleBarUtils;

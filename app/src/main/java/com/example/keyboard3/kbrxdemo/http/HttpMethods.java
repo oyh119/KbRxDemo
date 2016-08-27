@@ -3,8 +3,8 @@ package com.example.keyboard3.kbrxdemo.http;
 import com.example.keyboard3.kbrxdemo.http.config.HttpMethodsConfig;
 import com.example.keyboard3.kbrxdemo.http.config.RetryWhenNetworkException;
 import com.example.keyboard3.kbrxdemo.http.exception.ExceptionEngine;
-import com.example.model.HttpResult;
-import com.example.model.Subject;
+import com.example.keyboard3.kbrxdemo.model.HttpResult;
+import com.example.keyboard3.kbrxdemo.model.Subject;
 
 import java.util.List;
 
@@ -22,6 +22,7 @@ public class HttpMethods {
     private static HttpMethodsConfig config;
     private MovieService movieService;
     private static HttpMethods singleton;
+
     private HttpMethods() {
         config = HttpMethodsConfig.getInstance();
         movieService = config.getMovieService();

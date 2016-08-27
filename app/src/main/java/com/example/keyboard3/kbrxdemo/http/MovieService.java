@@ -1,7 +1,7 @@
 package com.example.keyboard3.kbrxdemo.http;
 
-import com.example.model.HttpResult;
-import com.example.model.Subject;
+import com.example.keyboard3.kbrxdemo.model.HttpResult;
+import com.example.keyboard3.kbrxdemo.model.Subject;
 
 import java.util.List;
 

@@ -23,11 +23,14 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile project(':model')
     compile project(':interestingtitlebar')
     compile 'com.android.support:appcompat-v7:24.1.1'
     compile 'io.reactivex:rxjava:1.1.0'

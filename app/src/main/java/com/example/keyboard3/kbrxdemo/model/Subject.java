@@ -1,4 +1,4 @@
-package com.example.model;
+package com.example.keyboard3.kbrxdemo.model;
 
 import java.util.List;
 
@@ -6,7 +6,6 @@ import java.util.List;
  * Created by liukun on 16/3/5.
  */
 public class Subject {
-
     private String id;
     private String alt;
     private String year;

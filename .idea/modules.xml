@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/KbRxDemo.iml" filepath="$PROJECT_DIR$/KbRxDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/interestingtitlebar/interestingtitlebar.iml" filepath="$PROJECT_DIR$/interestingtitlebar/interestingtitlebar.iml" />
-      <module fileurl="file://$PROJECT_DIR$/model/model.iml" filepath="$PROJECT_DIR$/model/model.iml" />
     </modules>
   </component>
 </project>

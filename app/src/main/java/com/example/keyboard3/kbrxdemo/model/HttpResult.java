@@ -1,6 +1,6 @@
-package com.example.model;
+package com.example.keyboard3.kbrxdemo.model;
 
-import com.example.model.common.Result;
+import com.example.keyboard3.kbrxdemo.model.common.Result;
 
 /**
  * Created by liukun on 16/3/5.
