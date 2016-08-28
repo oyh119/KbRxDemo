@@ -189,7 +189,7 @@ public abstract class RecyclerFragment<T> extends BaseFragment {
     }
 
     /**
-     * 加载列表页数据     *
+     * 加载列表页数据
      *
      * @param page
      */

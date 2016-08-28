@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.keyboard3.kbrxdemo.R;
-import com.example.keyboard3.kbrxdemo.ui.fragment.DataBind.DataBindingFragment;
+import com.example.keyboard3.kbrxdemo.ui.fragment.BindDingRecyclerFragment;
 import com.github.pwittchen.reactivenetwork.library.Connectivity;
 import com.github.pwittchen.reactivenetwork.library.ReactiveNetwork;
 
@@ -26,7 +26,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void init() {
-        fragmentReplace(R.id.fl_content, DataBindingFragment.newInstance());
+        fragmentReplace(R.id.fl_content, BindDingRecyclerFragment.newInstance());
         //initMonitorNetwork();
     }
 
@@ -39,7 +39,7 @@ public class MainActivity extends BaseActivity {
                 .filter(Connectivity.hasState(NetworkInfo.State.CONNECTED))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(connectivity -> {
-                    Log.d("keyboard3","已连接的网络类型："+connectivity.toString());
+                    Log.d("keyboard3", "已连接的网络类型：" + connectivity.toString());
                 });
     }
 
