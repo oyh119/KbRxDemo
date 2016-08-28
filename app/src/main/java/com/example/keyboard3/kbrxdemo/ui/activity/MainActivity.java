@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.keyboard3.kbrxdemo.R;
-import com.example.keyboard3.kbrxdemo.ui.fragment.DataBindingFragment;
+import com.example.keyboard3.kbrxdemo.ui.fragment.DataBind.DataBindingFragment;
 import com.github.pwittchen.reactivenetwork.library.Connectivity;
 import com.github.pwittchen.reactivenetwork.library.ReactiveNetwork;
 
