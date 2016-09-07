@@ -58,8 +58,9 @@ public class HttpMethods {
         @Override
         public T call(HttpResult<T> httpResult) {
             //根据基类的返回码 来判断 是否需要抛出服务端指定异常
-            /*if (httpResult.getResultCode() != 0) {
-                throw new ApiException(httpResult.getResultCode());
+           /* if (httpResult.status != null && !httpResult.status.succeed.equals("1")) {
+                int errorCode = Integer.parseInt(httpResult.status.error_code.trim());
+                throw new ServerException(errorCode, httpResult.status.error_desc);
             }*/
             return httpResult.getSubjects();
         }

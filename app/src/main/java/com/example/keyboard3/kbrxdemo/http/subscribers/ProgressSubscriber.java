@@ -1,4 +1,4 @@
-package com.example.keyboard3.kbrxdemo.core.subscribers;
+package com.example.keyboard3.kbrxdemo.http.subscribers;
 
 import android.content.Context;
 

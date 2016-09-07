@@ -2,8 +2,8 @@ package com.example.keyboard3.kbrxdemo.core.presenter;
 
 import android.content.Context;
 
-import com.example.keyboard3.kbrxdemo.core.subscribers.BaseSubscriber;
-import com.example.keyboard3.kbrxdemo.core.subscribers.SubscriberOnNextListener;
+import com.example.keyboard3.kbrxdemo.http.subscribers.BaseSubscriber;
+import com.example.keyboard3.kbrxdemo.http.subscribers.SubscriberOnNextListener;
 import com.example.keyboard3.kbrxdemo.http.HttpMethods;
 
 import rx.android.schedulers.AndroidSchedulers;

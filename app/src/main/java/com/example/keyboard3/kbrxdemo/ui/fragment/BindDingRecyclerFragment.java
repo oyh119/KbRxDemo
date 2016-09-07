@@ -19,7 +19,7 @@ import com.example.keyboard3.kbrxdemo.R;
 import com.example.keyboard3.kbrxdemo.RecyclerBinding;
 import com.example.keyboard3.kbrxdemo.core.Config;
 import com.example.keyboard3.kbrxdemo.core.presenter.MoviePresenter;
-import com.example.keyboard3.kbrxdemo.core.subscribers.SubscriberOnNextListener;
+import com.example.keyboard3.kbrxdemo.http.subscribers.SubscriberOnNextListener;
 import com.example.keyboard3.kbrxdemo.model.Subject;
 import com.github.markzhai.recyclerview.SingleTypeAdapter;
 

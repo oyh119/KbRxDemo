@@ -1,10 +1,9 @@
-package com.example.keyboard3.kbrxdemo.core.subscribers;
+package com.example.keyboard3.kbrxdemo.http.subscribers;
 
 import android.content.Context;
 import android.widget.Toast;
 
-import java.net.ConnectException;
-import java.net.SocketTimeoutException;
+import com.example.keyboard3.kbrxdemo.http.exception.ApiException;
 
 import rx.Subscriber;
 
@@ -14,27 +13,25 @@ import rx.Subscriber;
  * Date: 2016-08-16 16:14
  */
 public class BaseSubscriber<T> extends Subscriber<T> {
-    private SubscriberOnNextListener mSubscriberOnNextListener;
+    SubscriberOnNextListener mSubscriberOnNextListener;
 
     private Context context;
     private boolean isShow=true;
-    public BaseSubscriber(SubscriberOnNextListener mSubscriberOnNextListener, Context context) {
-        this.mSubscriberOnNextListener = mSubscriberOnNextListener;
+    public BaseSubscriber(SubscriberOnNextListener subscriberOnNextListener, Context context) {
+        this.mSubscriberOnNextListener = subscriberOnNextListener;
         this.context = context;
     }
     /**
      * 对错误进行统一处理
      * 隐藏ProgressDialog
+     *
      * @param e
      */
     @Override
     public void onError(Throwable e) {
-        if (e instanceof SocketTimeoutException) {
-            Toast.makeText(context, "网络中断，请检查您的网络状态", Toast.LENGTH_SHORT).show();
-        } else if (e instanceof ConnectException) {
-            Toast.makeText(context, "网络中断，请检查您的网络状态", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(context, "error:" + e.getMessage(), Toast.LENGTH_SHORT).show();
+        if (e instanceof ApiException) {
+            ApiException exception = (ApiException) e;
+            Toast.makeText(context, "error_code:" + exception.getCode() + "\nerror_msg:" + exception.getDisplayMessage(), Toast.LENGTH_SHORT).show();
         }
         mSubscriberOnNextListener.onError(e);
     }

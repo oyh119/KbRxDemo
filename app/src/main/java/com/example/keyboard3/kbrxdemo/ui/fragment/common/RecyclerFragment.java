@@ -11,7 +11,7 @@ import android.view.LayoutInflater;
 import android.widget.Toast;
 
 import com.example.keyboard3.kbrxdemo.R;
-import com.example.keyboard3.kbrxdemo.core.subscribers.SubscriberOnNextListener;
+import com.example.keyboard3.kbrxdemo.http.subscribers.SubscriberOnNextListener;
 import com.example.keyboard3.kbrxdemo.view.DefaultLoadingViewGroup;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
